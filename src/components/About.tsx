@@ -1,149 +1,82 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Sparkles, Code, Globe, Shield } from "lucide-react";
-import { about, education } from "@/data/portfolio";
-
-const highlights = [
-  { icon: <Code size={24} />, label: "Full-Stack" },
-  { icon: <Globe size={24} />, label: "Web3" },
-  { icon: <Sparkles size={24} />, label: "AI/ML" },
-  { icon: <Shield size={24} />, label: "Security" },
-];
+import { MapPin } from "lucide-react";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 cyber-line" />
-      <div className="absolute top-1/2 right-0 w-64 h-64 bg-glow blur-3xl opacity-30" />
-
-      <div className="container mx-auto px-6">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="max-w-6xl mx-auto"
-        >
-          {/* Section Header */}
-          <div className="flex items-center gap-4 mb-12">
-            <span className="text-primary font-mono text-sm">01.</span>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold">About Me</h2>
-            <div className="flex-1 h-px bg-border" />
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <div className="space-y-6">
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.2 }}
-                className="text-xl text-foreground font-medium"
-              >
-                {about.intro}
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.3 }}
-                className="text-muted-foreground leading-relaxed"
-              >
-                {about.description}
-              </motion.p>
-
-              {/* Highlights */}
-              <motion.ul
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.4 }}
-                className="space-y-3"
-              >
-                {about.highlights.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3 text-muted-foreground">
-                    <span className="text-primary mt-1.5">▹</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </motion.ul>
-
-              {/* Education Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.5 }}
-                className="p-6 rounded-xl glass hover-lift"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-primary/10">
-                    <Sparkles className="text-primary" size={24} />
-                  </div>
-                  <div>
-                    <h3 className="font-heading font-semibold text-lg">{education.degree}</h3>
-                    <p className="text-muted-foreground">{education.university}</p>
-                    <div className="flex items-center gap-4 mt-2 text-sm">
-                      <span className="text-primary">{education.duration}</span>
-                      <span className="text-muted-foreground">SGPA: {education.sgpa}</span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Right Content - Visual */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="relative"
-            >
-              <div className="relative z-10 p-8 rounded-2xl glass-strong">
-                {/* Domain Icons Grid */}
-                <div className="grid grid-cols-2 gap-6">
-                  {highlights.map((item, index) => (
-                    <motion.div
-                      key={item.label}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ delay: 0.4 + index * 0.1 }}
-                      className="flex flex-col items-center p-6 rounded-xl bg-muted/30 hover:bg-muted/50 transition-colors group"
-                    >
-                      <div className="p-4 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform">
-                        {item.icon}
-                      </div>
-                      <span className="mt-3 font-medium text-foreground">{item.label}</span>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Stats */}
-                <div className="mt-8 grid grid-cols-3 gap-4">
-                  <div className="text-center">
-                    <div className="text-3xl font-heading font-bold text-gradient">5+</div>
-                    <div className="text-sm text-muted-foreground">Projects</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-heading font-bold text-gradient">2+</div>
-                    <div className="text-sm text-muted-foreground">Hackathons</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-heading font-bold text-gradient">8.86</div>
-                    <div className="text-sm text-muted-foreground">SGPA</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Decorative Elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 border border-primary/20 rounded-xl rotate-12" />
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 border border-secondary/20 rounded-lg -rotate-12" />
-            </motion.div>
-          </div>
-        </motion.div>
+    <section
+      id="about"
+      ref={ref}
+      className="section-full flex items-center relative overflow-hidden"
+    >
+      {/* Background Photo */}
+      <div className="absolute right-0 top-0 bottom-0 w-full md:w-1/2">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${profilePhoto})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent md:from-background md:via-transparent md:to-transparent" />
       </div>
+
+      {/* Content */}
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-xl">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-5xl md:text-7xl font-heading text-foreground mb-2 section-title-line">
+              ABOUT
+            </h2>
+            <p className="text-primary text-sm mb-8">workmahto24@gmail.com</p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-4 mb-10"
+          >
+            <p className="text-foreground/90 leading-relaxed">
+              <span className="text-foreground font-medium">Full-Stack & Web3 Developer</span> with expertise in building 
+              scalable web applications and decentralized systems.
+            </p>
+            <p className="text-foreground/70 leading-relaxed text-sm">
+              Currently pursuing B.E. in AI & Data Science at MMCOE Pune, I specialize 
+              in React, Next.js, Node.js, and blockchain technologies. I've built 
+              financial analytics platforms powered by LLMs, decentralized verification 
+              systems on Avalanche, and AI-driven applications—each focused on security, 
+              scalability, and exceptional user experience.
+            </p>
+            <p className="text-foreground/70 leading-relaxed text-sm">
+              Award-winning solutions at XDE Studios and Avalanche hackathons demonstrate 
+              my commitment to building innovative, user-friendly software.
+            </p>
+          </motion.div>
+
+          {/* Location */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex items-center gap-6 text-sm text-foreground/60"
+          >
+            <div className="flex items-center gap-2">
+              <MapPin size={14} className="text-primary" />
+              <span>Pune, Maharashtra</span>
+            </div>
+            <div className="h-px flex-1 bg-primary/30 max-w-[120px]" />
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Corner Expand Icon */}
+      <div className="corner-icon" />
     </section>
   );
 };
