@@ -1,29 +1,31 @@
-import BentoCard from "../BentoCard";
-import { GraduationCap, Award } from "lucide-react";
+import EditorialCard from "../EditorialCard";
 
 const AboutCard = () => {
   return (
-    <BentoCard className="bento-medium" delay={0.7}>
-      <p className="bento-label mb-4">About Me</p>
-      
-      <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-        Engineering student specializing in AI & Data Science at MMCOE Pune. 
-        Building scalable web apps and decentralized systems with React, Next.js, and blockchain technologies.
-      </p>
-      
-      <div className="grid grid-cols-2 gap-4">
-        <div className="p-4 rounded-xl bg-secondary/50 border border-border/30">
-          <GraduationCap size={20} className="text-primary mb-2" />
-          <p className="font-semibold text-sm">SGPA 8.86</p>
-          <p className="text-xs text-muted-foreground">2023-2027</p>
-        </div>
-        <div className="p-4 rounded-xl bg-secondary/50 border border-border/30">
-          <Award size={20} className="text-primary mb-2" />
-          <p className="font-semibold text-sm">Hackathon Winner</p>
-          <p className="text-xs text-muted-foreground">XDE & Avalanche</p>
-        </div>
+    <EditorialCard className="editorial-small" delay={0.8}>
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="editorial-subheading">Contents</h2>
       </div>
-    </BentoCard>
+      
+      <div className="space-y-4">
+        {[
+          { num: "01", label: "Experience", page: "Work history" },
+          { num: "02", label: "Education", page: "Academic background" },
+          { num: "03", label: "About", page: "Personal info" },
+          { num: "04", label: "Skills", page: "Technical expertise" },
+          { num: "05", label: "Projects", page: "Hackathons" },
+          { num: "06", label: "Contact", page: "Get in touch" },
+        ].map((item) => (
+          <div key={item.num} className="flex items-center justify-between border-b border-foreground/20 pb-2">
+            <div className="flex items-center gap-4">
+              <span className="font-mono text-xs text-muted-foreground">{item.num}</span>
+              <span className="text-sm font-medium uppercase tracking-wide">{item.label}</span>
+            </div>
+            <span className="text-[10px] font-mono text-muted-foreground uppercase">{item.page}</span>
+          </div>
+        ))}
+      </div>
+    </EditorialCard>
   );
 };
 
