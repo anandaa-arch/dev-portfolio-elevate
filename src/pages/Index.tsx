@@ -8,6 +8,7 @@ import HackathonsCard from "@/components/bento/HackathonsCard";
 import TechStackCard from "@/components/bento/TechStackCard";
 import SocialsCard from "@/components/bento/SocialsCard";
 import SkillsCard from "@/components/bento/SkillsCard";
+import AboutCard from "@/components/bento/AboutCard";
 
 const Index = () => {
   return (
@@ -46,8 +47,9 @@ const Index = () => {
       {/* Editorial Grid */}
       <div className="container mx-auto pt-14">
         <div className="editorial-grid">
-          {/* Row 1: Hero (large) + Photo */}
+          {/* Row 1: Hero (large) + About (contents) */}
           <HeroCard />
+          <AboutCard />
           <PhotoCard />
           
           {/* Row 2: Experience (wide) */}
