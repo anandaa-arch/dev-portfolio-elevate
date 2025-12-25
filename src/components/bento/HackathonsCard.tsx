@@ -14,7 +14,7 @@ const getOutcomeBadge = (outcome: Hackathon["outcome"]) => {
 
 const HackathonsCard = () => {
   return (
-    <EditorialCard className="editorial-wide overflow-hidden" delay={0.4}>
+    <EditorialCard className="editorial-full overflow-hidden" delay={0.4}>
       <div className="section-header">
         <h2 className="editorial-heading">Projects</h2>
         <span className="editorial-label">Hackathons & Competitions</span>

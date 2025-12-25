@@ -60,8 +60,10 @@ const Index = () => {
           <SkillsCard />
           <SocialsCard />
           
-          {/* Row 4: Tech Stack (medium) + Hackathons (wide) */}
+          {/* Row 4: Tech Stack */}
           <TechStackCard />
+          
+          {/* Row 5: Hackathons (full width) */}
           <HackathonsCard />
         </div>
       </div>
