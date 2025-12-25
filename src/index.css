@@ -120,6 +120,11 @@
     grid-row: span 1;
   }
 
+  .editorial-full {
+    grid-column: span 4;
+    grid-row: span 1;
+  }
+
   .editorial-medium {
     grid-column: span 2;
     grid-row: span 1;
@@ -142,6 +147,10 @@
     }
 
     .editorial-wide {
+      grid-column: span 2;
+    }
+
+    .editorial-full {
       grid-column: span 2;
     }
   }
