@@ -11,9 +11,9 @@ const skills = [
 
 const SkillsCard = () => {
   return (
-    <EditorialCard className="editorial-small bg-foreground text-card" delay={0.7}>
+    <EditorialCard className="editorial-small skill-card" delay={0.7}>
       <div className="flex items-center justify-between mb-6">
-        <h2 className="editorial-subheading text-card">Skills</h2>
+        <h2 className="editorial-subheading">Skills</h2>
         <span className="circled-number border-card text-card text-sm">C</span>
       </div>
       
