@@ -5,7 +5,7 @@ const HeroCard = () => {
     "const Developer = {",
     "  name: 'Anand',",
     "  stack: ['Solidity', 'Next.js'],",
-    "  status: 'Open to internships & entry-level roles'",
+    "  status: 'Seeking SDE / Full-Stack / Web3 roles'",
     "};",
   ];
 
