@@ -80,26 +80,12 @@
 @layer utilities {
   /* Editorial Grid Container */
   .editorial-grid {
-    @apply grid gap-0;
-    grid-template-columns: repeat(4, 1fr);
-    border: 1px solid hsl(var(--border));
-  }
-
-  @media (max-width: 1024px) {
-    .editorial-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 640px) {
-    .editorial-grid {
-      grid-template-columns: 1fr;
-    }
+    @apply grid gap-0 grid-cols-1 md:grid-cols-2 border border-border;
   }
 
   /* Editorial Card Base */
   .editorial-card {
-    @apply relative bg-card overflow-hidden;
+    @apply relative bg-card overflow-hidden p-4 sm:p-6 md:p-8;
     border: 1px solid hsl(var(--border));
     margin: -1px;
   }
@@ -121,7 +107,7 @@
   }
 
   .editorial-full {
-    grid-column: span 4;
+    grid-column: span 2;
     grid-row: span 1;
   }
 
@@ -169,7 +155,7 @@
   /* Editorial Typography */
   .editorial-title {
     font-family: var(--font-display);
-    @apply text-6xl md:text-8xl lg:text-9xl font-bold uppercase tracking-tighter leading-none;
+    @apply text-3xl md:text-6xl font-bold uppercase tracking-tighter leading-none;
   }
 
   .editorial-heading {
@@ -291,7 +277,7 @@
     background: #000;
     color: #fff;
     border-color: rgba(255, 255, 255, 0.12);
-    gap: 24px;
+    gap: 18px;
   }
 
   .hero-headline {
@@ -309,7 +295,7 @@
     border-color: #2a2a2a;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
     max-width: 520px;
-    width: min(100%, 520px);
+    width: 100%;
   }
 
   .code-window__header {

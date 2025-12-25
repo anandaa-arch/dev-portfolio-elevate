@@ -10,13 +10,13 @@ const HeroCard = () => {
   ];
 
   return (
-    <EditorialCard className="editorial-hero hero-card flex flex-col justify-between min-h-[420px] md:min-h-[540px]" delay={0}>
+    <EditorialCard className="editorial-hero hero-card flex flex-col justify-between min-h-[340px] md:min-h-[520px] gap-6" delay={0}>
       <div className="flex justify-between items-start text-white/80">
         <span className="editorial-label text-white/80">Portfolio / 2025</span>
         <span className="editorial-label text-white/80">Full-Stack & Web3</span>
       </div>
       
-      <div className="flex flex-col items-center text-center gap-5">
+      <div className="flex flex-col items-center text-center gap-4">
         <p className="hero-headline">Building the Decentralized Web</p>
         <div className="code-window">
           <div className="code-window__header">

@@ -23,7 +23,7 @@ const TechStackCard = () => {
         <span className="editorial-label">Expertise</span>
       </div>
       
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {techStack.map((tech) => (
           <div
             key={tech.name}

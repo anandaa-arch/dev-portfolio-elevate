@@ -9,7 +9,7 @@ const EducationCard = () => {
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div>
+        <div className="mb-6 md:mb-0">
           <div className="flex items-start gap-4 mb-4">
             <span className="circled-number shrink-0">1</span>
             <div>

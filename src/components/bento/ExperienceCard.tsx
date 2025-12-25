@@ -31,7 +31,7 @@ const ExperienceCard = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {experiences.map((exp, index) => (
-          <div key={index} className="relative">
+          <div key={index} className="relative pl-4 md:pl-0 border-l md:border-l-0 border-foreground/20 md:border-none pb-6 md:pb-0 last:pb-0">
             <div className="flex items-start gap-4 mb-4">
               <span className="circled-number shrink-0">{index + 1}</span>
               <div>

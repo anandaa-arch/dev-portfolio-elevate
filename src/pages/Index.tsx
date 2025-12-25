@@ -15,7 +15,7 @@ const Index = () => {
     <main className="min-h-screen bg-background text-foreground">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-foreground">
-        <div className="container mx-auto px-6 h-14 flex items-center justify-between">
+        <div className="container mx-auto px-4 sm:px-6 py-3 sm:h-14 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <motion.a 
             href="#" 
             initial={{ opacity: 0 }}
@@ -25,15 +25,21 @@ const Index = () => {
             Anand Raj
           </motion.a>
           
+          <div className="flex flex-col gap-1 sm:hidden text-xs font-mono uppercase tracking-wide text-foreground">
+            <a href="#experience" className="hover:text-muted-foreground">Experience</a>
+            <a href="#projects" className="hover:text-muted-foreground">Projects</a>
+            <a href="#contact" className="hover:text-muted-foreground">Contact</a>
+          </div>
+
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
-            className="flex items-center gap-6"
+            className="hidden sm:flex items-center gap-6"
           >
-            <a href="#experience" className="nav-link hidden sm:block">Experience</a>
-            <a href="#projects" className="nav-link hidden sm:block">Projects</a>
-            <a href="#contact" className="nav-link hidden sm:block">Contact</a>
+            <a href="#experience" className="nav-link">Experience</a>
+            <a href="#projects" className="nav-link">Projects</a>
+            <a href="#contact" className="nav-link">Contact</a>
             <a 
               href="mailto:workmahto24@gmail.com" 
               className="px-4 py-2 bg-foreground text-background text-xs font-mono uppercase tracking-wider hover:bg-foreground/90 transition-colors"
@@ -45,7 +51,7 @@ const Index = () => {
       </nav>
 
       {/* Editorial Grid */}
-      <div className="container mx-auto pt-14">
+      <div className="container mx-auto px-4 sm:px-6 pt-16">
         <div className="editorial-grid">
           {/* Row 1: Hero (large) + About (contents) */}
           <HeroCard />
