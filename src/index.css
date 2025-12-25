@@ -111,6 +111,56 @@
     scroll-snap-align: start;
   }
 
+  /* Editorial grid section with borders */
+  .editorial-section {
+    @apply relative border-t border-border/20;
+  }
+
+  .editorial-section::before {
+    content: '';
+    @apply absolute left-0 top-0 bottom-0 w-px bg-border/20;
+  }
+
+  .editorial-section::after {
+    content: '';
+    @apply absolute right-0 top-0 bottom-0 w-px bg-border/20;
+  }
+
+  /* Editorial grid container */
+  .editorial-grid {
+    @apply border border-border/20;
+  }
+
+  .editorial-grid-item {
+    @apply border-r border-b border-border/20;
+  }
+
+  .editorial-grid-item:last-child {
+    @apply border-r-0;
+  }
+
+  /* Oversized editorial section title */
+  .editorial-title {
+    @apply text-6xl md:text-8xl lg:text-9xl font-heading text-foreground uppercase tracking-tight leading-none;
+  }
+
+  .editorial-subtitle {
+    @apply text-3xl md:text-5xl font-heading text-foreground uppercase tracking-wide;
+  }
+
+  /* Large stylized numbers */
+  .editorial-number {
+    @apply text-5xl md:text-7xl font-heading text-foreground/10 leading-none;
+  }
+
+  .editorial-number-active {
+    @apply text-5xl md:text-7xl font-heading text-primary leading-none;
+  }
+
+  .editorial-number-small {
+    @apply text-3xl md:text-4xl font-heading text-foreground/15 leading-none;
+  }
+
   /* Glass effect */
   .glass {
     @apply bg-card/40 backdrop-blur-md border border-border/30;
@@ -118,21 +168,21 @@
 
   /* Skill bar */
   .skill-bar {
-    @apply h-1.5 rounded-full bg-muted overflow-hidden;
+    @apply h-1 rounded-none bg-foreground/10 overflow-hidden;
   }
 
   .skill-bar-fill {
-    @apply h-full rounded-full bg-gradient-primary;
+    @apply h-full rounded-none bg-foreground;
     transition: width 1s ease-out;
   }
 
   /* Timeline */
   .timeline-dot {
-    @apply w-10 h-10 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center;
+    @apply w-10 h-10 rounded-none bg-transparent border border-border/30 flex items-center justify-center;
   }
 
   .timeline-line {
-    @apply w-px h-full bg-border absolute left-5 top-10;
+    @apply w-px h-full bg-border/20 absolute left-5 top-10;
   }
 
   /* Hover effects */
@@ -147,31 +197,31 @@
 
   /* Social icon */
   .social-icon {
-    @apply w-8 h-8 rounded-full flex items-center justify-center bg-muted/50 text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300;
+    @apply w-10 h-10 rounded-none flex items-center justify-center bg-transparent border border-border/30 text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300;
   }
 
-  /* Section title underline */
+  /* Section title underline - editorial style */
   .section-title-line {
     @apply relative inline-block;
   }
 
   .section-title-line::after {
     content: '';
-    @apply absolute -bottom-2 left-0 w-12 h-0.5 bg-primary;
+    @apply absolute -bottom-2 left-0 w-full h-px bg-foreground/20;
   }
 
-  /* Button styles */
+  /* Button styles - editorial/brutalist */
   .btn-primary {
-    @apply px-6 py-2.5 rounded border border-primary text-primary font-medium text-sm uppercase tracking-wider hover:bg-primary hover:text-primary-foreground transition-all duration-300;
+    @apply px-8 py-3 rounded-none border-2 border-primary text-primary font-medium text-xs uppercase tracking-widest hover:bg-primary hover:text-primary-foreground transition-all duration-300;
   }
 
   .btn-secondary {
-    @apply px-6 py-2.5 rounded border border-foreground/30 text-foreground font-medium text-sm uppercase tracking-wider hover:border-primary hover:text-primary transition-all duration-300;
+    @apply px-8 py-3 rounded-none border border-foreground/30 text-foreground font-medium text-xs uppercase tracking-widest hover:border-foreground hover:bg-foreground hover:text-background transition-all duration-300;
   }
 
   /* Progress bar label */
   .progress-label {
-    @apply flex justify-between items-center text-sm mb-2;
+    @apply flex justify-between items-center text-xs mb-2 uppercase tracking-wider;
   }
 
   /* Navigation active state */
@@ -179,8 +229,32 @@
     @apply text-primary;
   }
 
-  /* Corner expand icon */
+  /* Corner expand icon - editorial style */
   .corner-icon {
-    @apply absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-foreground/30;
+    @apply absolute bottom-6 right-6 w-8 h-8 border-r border-b border-foreground/20;
+  }
+
+  /* Editorial card */
+  .editorial-card {
+    @apply relative p-6 md:p-8 border border-border/20 bg-transparent hover:bg-card/30 transition-all duration-300;
+  }
+
+  .editorial-card::before {
+    content: '';
+    @apply absolute top-0 left-0 w-8 h-px bg-primary opacity-0 transition-opacity duration-300;
+  }
+
+  .editorial-card:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Horizontal rule - editorial */
+  .editorial-hr {
+    @apply w-full h-px bg-border/20;
+  }
+
+  /* Text styles */
+  .text-editorial-muted {
+    @apply text-foreground/50 text-xs uppercase tracking-widest;
   }
 }
