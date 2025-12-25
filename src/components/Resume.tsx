@@ -4,14 +4,14 @@ import {
   SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiNodedotjs,
   SiPython, SiMongodb, SiDocker, SiSolidity, SiGithub
 } from "react-icons/si";
-import { GraduationCap, Briefcase, Code, Globe, Shield, Database } from "lucide-react";
+import { GraduationCap, Code, Globe, Shield, Database } from "lucide-react";
 
 const softwareSkills = [
-  { name: "React.js", level: 90, icon: <SiReact /> },
-  { name: "Next.js", level: 85, icon: <SiNextdotjs /> },
-  { name: "TypeScript", level: 80, icon: <SiTypescript /> },
-  { name: "Node.js", level: 85, icon: <SiNodedotjs /> },
-  { name: "Solidity", level: 75, icon: <SiSolidity /> },
+  { name: "React.js", level: 90 },
+  { name: "Next.js", level: 85 },
+  { name: "TypeScript", level: 80 },
+  { name: "Node.js", level: 85 },
+  { name: "Solidity", level: 75 },
 ];
 
 const languages = [
@@ -27,22 +27,19 @@ const experience = [
     company: "SWIFTY9",
     role: "Web Developer Intern",
     period: "Oct 2025 – Present",
-    icon: <Code size={16} />,
-    color: "bg-blue-500",
+    description: "Building scalable web applications with modern tech stack",
   },
   {
     company: "GIRLSCRIPT SUMMER OF CODE",
     role: "Open Source Contributor",
     period: "July 2025",
-    icon: <Globe size={16} />,
-    color: "bg-green-500",
+    description: "Contributing to open-source projects and community initiatives",
   },
   {
     company: "TCS FORAGE",
     role: "Cybersecurity Virtual Intern",
     period: "November 2024",
-    icon: <Shield size={16} />,
-    color: "bg-purple-500",
+    description: "Security analysis and vulnerability assessment training",
   },
 ];
 
@@ -65,9 +62,10 @@ const SkillBar = ({ name, level, delay }: { name: string; level: number; delay: 
   const isInView = useInView(ref, { once: true });
 
   return (
-    <div ref={ref} className="mb-4">
+    <div ref={ref} className="mb-5">
       <div className="progress-label">
-        <span className="text-foreground/80 text-xs">{name}</span>
+        <span className="text-foreground/70">{name}</span>
+        <span className="text-foreground/40">{level}%</span>
       </div>
       <div className="skill-bar">
         <motion.div
@@ -89,24 +87,45 @@ const Resume = () => {
     <section
       id="resume"
       ref={ref}
-      className="section-full py-20 relative overflow-hidden"
+      className="section-full py-24 relative overflow-hidden editorial-section"
     >
       <div className="container mx-auto px-6">
-        {/* Three Column Layout */}
-        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
+        {/* Editorial Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-16 border-b border-border/20 pb-8"
+        >
+          <div className="flex items-end justify-between">
+            <h2 className="editorial-title">
+              RESUME
+            </h2>
+            <span className="text-editorial-muted hidden md:block">Skills & Experience</span>
+          </div>
+        </motion.div>
+
+        {/* Three Column Layout with Editorial Grid */}
+        <div className="grid lg:grid-cols-3 gap-0 editorial-grid">
           {/* Left Column - Skills */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="space-y-8"
+            className="p-8 lg:p-10 editorial-grid-item"
           >
             {/* Software Skills */}
-            <div>
-              <h3 className="text-xl font-heading text-foreground mb-6 section-title-line">
-                SOFTWARE SKILLS
-              </h3>
-              <div className="space-y-1">
+            <div className="mb-12">
+              <div className="flex items-start gap-4 mb-8">
+                <span className="editorial-number">01</span>
+                <div>
+                  <h3 className="editorial-subtitle mb-1">
+                    SOFTWARE
+                  </h3>
+                  <p className="text-editorial-muted">Technical Skills</p>
+                </div>
+              </div>
+              <div>
                 {softwareSkills.map((skill, index) => (
                   <SkillBar key={skill.name} name={skill.name} level={skill.level} delay={index * 0.1} />
                 ))}
@@ -114,11 +133,17 @@ const Resume = () => {
             </div>
 
             {/* Languages */}
-            <div>
-              <h3 className="text-xl font-heading text-foreground mb-6 section-title-line">
-                LANGUAGES
-              </h3>
-              <div className="space-y-1">
+            <div className="mb-12">
+              <div className="flex items-start gap-4 mb-8">
+                <span className="editorial-number">02</span>
+                <div>
+                  <h3 className="editorial-subtitle mb-1">
+                    LANGUAGES
+                  </h3>
+                  <p className="text-editorial-muted">Programming</p>
+                </div>
+              </div>
+              <div>
                 {languages.map((lang, index) => (
                   <SkillBar key={lang.name} name={lang.name} level={lang.level} delay={0.5 + index * 0.1} />
                 ))}
@@ -127,12 +152,21 @@ const Resume = () => {
 
             {/* Personal Skills */}
             <div>
-              <h3 className="text-xl font-heading text-foreground mb-4 section-title-line">
-                PERSONAL SKILLS
-              </h3>
-              <p className="text-foreground/60 text-sm">
-                {personalSkills.join(" · ")}
-              </p>
+              <div className="flex items-start gap-4 mb-6">
+                <span className="editorial-number">03</span>
+                <div>
+                  <h3 className="editorial-subtitle mb-1">
+                    SOFT SKILLS
+                  </h3>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {personalSkills.map((skill) => (
+                  <span key={skill} className="px-3 py-1.5 text-xs uppercase tracking-wider border border-border/30 text-foreground/60">
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
           </motion.div>
 
@@ -141,32 +175,38 @@ const Resume = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-8"
+            className="p-8 lg:p-10 editorial-grid-item"
           >
-            <div>
-              <h3 className="text-xl font-heading text-foreground mb-6 section-title-line">
-                EXPERIENCE
-              </h3>
-              <div className="space-y-6 relative">
+            <div className="mb-12">
+              <div className="flex items-end justify-between mb-10">
+                <h3 className="editorial-subtitle">
+                  EXPERIENCE
+                </h3>
+                <span className="text-editorial-muted">{experience.length} Roles</span>
+              </div>
+              
+              <div className="space-y-8">
                 {experience.map((exp, index) => (
-                  <div key={index} className="flex gap-4 relative">
-                    {/* Timeline line */}
-                    {index < experience.length - 1 && (
-                      <div className="absolute left-5 top-10 w-px h-full bg-border" />
-                    )}
-                    
-                    {/* Icon */}
-                    <div className={`timeline-dot shrink-0 ${exp.color} bg-opacity-20`}>
-                      <span className="text-primary">{exp.icon}</span>
-                    </div>
-                    
-                    {/* Content */}
-                    <div>
-                      <h4 className="text-sm font-semibold text-foreground">
-                        {exp.company}
-                      </h4>
-                      <p className="text-xs text-primary mb-1">{exp.role}</p>
-                      <p className="text-xs text-foreground/50">{exp.period}</p>
+                  <div key={index} className="relative">
+                    {/* Number */}
+                    <div className="flex gap-6">
+                      <span className="editorial-number-active">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <div className="flex-1 pt-2">
+                        <div className="flex items-start justify-between mb-2">
+                          <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide">
+                            {exp.company}
+                          </h4>
+                        </div>
+                        <p className="text-primary text-xs uppercase tracking-wider mb-2">{exp.role}</p>
+                        <p className="text-foreground/50 text-xs mb-3">{exp.period}</p>
+                        <p className="text-foreground/40 text-xs leading-relaxed">{exp.description}</p>
+                        
+                        {index < experience.length - 1 && (
+                          <div className="editorial-hr mt-8" />
+                        )}
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -174,20 +214,20 @@ const Resume = () => {
             </div>
 
             {/* Education */}
-            <div>
-              <h3 className="text-xl font-heading text-foreground mb-4 section-title-line">
-                EDUCATION
-              </h3>
-              <div className="flex gap-4">
-                <div className="timeline-dot shrink-0">
-                  <GraduationCap size={16} className="text-primary" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-semibold text-foreground">
+            <div className="pt-8 border-t border-border/20">
+              <div className="flex items-end justify-between mb-8">
+                <h3 className="editorial-subtitle">
+                  EDUCATION
+                </h3>
+              </div>
+              <div className="flex gap-6">
+                <span className="editorial-number-active">01</span>
+                <div className="pt-2">
+                  <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide">
                     B.E. in AI & Data Science
                   </h4>
-                  <p className="text-xs text-primary">MMCOE, Pune</p>
-                  <p className="text-xs text-foreground/50">2023-2027 · SGPA: 8.86</p>
+                  <p className="text-primary text-xs uppercase tracking-wider mt-1">MMCOE, Pune</p>
+                  <p className="text-foreground/50 text-xs mt-2">2023-2027 · SGPA: 8.86</p>
                 </div>
               </div>
             </div>
@@ -198,26 +238,35 @@ const Resume = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="space-y-8"
+            className="p-8 lg:p-10 border-r-0"
           >
             {/* What Can I Do */}
-            <div>
-              <h3 className="text-xl font-heading text-foreground mb-4 section-title-line">
-                WHAT CAN I DO ?
-              </h3>
-              <p className="text-foreground/60 text-sm leading-relaxed">
-                {whatCanIDo.join(" · ")}
-              </p>
+            <div className="mb-12">
+              <div className="flex items-end justify-between mb-8">
+                <h3 className="editorial-subtitle">
+                  SERVICES
+                </h3>
+              </div>
+              <div className="space-y-4">
+                {whatCanIDo.map((item, index) => (
+                  <div key={index} className="flex items-center gap-4">
+                    <span className="text-foreground/20 text-xs">{String(index + 1).padStart(2, '0')}</span>
+                    <span className="text-foreground/70 text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Dev Skills */}
-            <div>
-              <h3 className="text-xl font-heading text-foreground mb-4 section-title-line">
-                DEV SKILLS
-              </h3>
-              <div className="space-y-2">
+            <div className="mb-12">
+              <div className="flex items-end justify-between mb-8">
+                <h3 className="editorial-subtitle">
+                  TECH STACK
+                </h3>
+              </div>
+              <div className="space-y-3">
                 {devSkills.map((skill, index) => (
-                  <p key={index} className="text-foreground/60 text-xs">
+                  <p key={index} className="text-foreground/50 text-xs tracking-wide">
                     {skill}
                   </p>
                 ))}
@@ -226,9 +275,11 @@ const Resume = () => {
 
             {/* Hobbies & Interests */}
             <div>
-              <h3 className="text-xl font-heading text-foreground mb-4 section-title-line">
-                HOBBIES & INTERESTS
-              </h3>
+              <div className="flex items-end justify-between mb-8">
+                <h3 className="editorial-subtitle">
+                  INTERESTS
+                </h3>
+              </div>
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { icon: <Code size={20} />, label: "Coding" },
@@ -236,9 +287,9 @@ const Resume = () => {
                   { icon: <Globe size={20} />, label: "Open Source" },
                   { icon: <Shield size={20} />, label: "Security" },
                 ].map((item, index) => (
-                  <div key={index} className="flex flex-col items-center gap-2 p-4 rounded-lg bg-card/50">
-                    <span className="text-foreground/60">{item.icon}</span>
-                    <span className="text-xs text-foreground/60">{item.label}</span>
+                  <div key={index} className="flex flex-col items-center gap-3 p-4 border border-border/20">
+                    <span className="text-foreground/40">{item.icon}</span>
+                    <span className="text-xs text-foreground/50 uppercase tracking-wider">{item.label}</span>
                   </div>
                 ))}
               </div>
@@ -247,7 +298,7 @@ const Resume = () => {
         </div>
       </div>
 
-      {/* Corner Expand Icon */}
+      {/* Corner decoration */}
       <div className="corner-icon" />
     </section>
   );

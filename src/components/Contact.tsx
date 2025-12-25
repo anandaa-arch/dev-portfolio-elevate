@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Mail, MapPin, Phone, Github, Linkedin, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Github, Linkedin, Send, ArrowUpRight } from "lucide-react";
 
 const Contact = () => {
   const ref = useRef(null);
@@ -10,34 +10,49 @@ const Contact = () => {
     <section
       id="contact"
       ref={ref}
-      className="py-20 relative overflow-hidden"
+      className="py-24 relative overflow-hidden editorial-section"
     >
       <div className="container mx-auto px-6">
+        {/* Editorial Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto text-center"
+          className="mb-16 border-b border-border/20 pb-8"
         >
-          <h2 className="text-5xl md:text-7xl font-heading text-foreground mb-4">
-            GET IN TOUCH
-          </h2>
-          <p className="text-foreground/60 mb-12 max-w-xl mx-auto">
-            I'm currently looking for internship opportunities and exciting projects. 
-            Let's build something amazing together!
-          </p>
+          <div className="flex items-end justify-between">
+            <h2 className="editorial-title">
+              GET IN TOUCH
+            </h2>
+            <span className="text-editorial-muted hidden md:block">Let's Connect</span>
+          </div>
+        </motion.div>
 
-          {/* Contact Cards */}
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+        <div className="max-w-4xl mx-auto">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-foreground/50 mb-16 max-w-xl text-center mx-auto"
+          >
+            I'm currently looking for internship opportunities and exciting projects. 
+            Let's build something amazing together.
+          </motion.p>
+
+          {/* Contact Grid */}
+          <div className="grid md:grid-cols-3 gap-0 editorial-grid mb-16">
             <motion.a
               href="mailto:workmahto24@gmail.com"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2 }}
-              className="p-6 rounded-xl bg-card/50 hover-lift group"
+              className="p-8 editorial-grid-item group hover:bg-card/30 transition-all duration-300"
             >
-              <Mail className="text-primary mb-4 mx-auto group-hover:scale-110 transition-transform" size={28} />
-              <p className="text-sm text-foreground/60 mb-1">Email</p>
+              <div className="flex items-start justify-between mb-6">
+                <Mail className="text-foreground/30 group-hover:text-primary transition-colors" size={24} />
+                <ArrowUpRight className="text-foreground/20 group-hover:text-primary transition-colors" size={16} />
+              </div>
+              <p className="text-editorial-muted mb-2">Email</p>
               <p className="text-foreground text-sm font-medium">workmahto24@gmail.com</p>
             </motion.a>
 
@@ -46,10 +61,13 @@ const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3 }}
-              className="p-6 rounded-xl bg-card/50 hover-lift group"
+              className="p-8 editorial-grid-item group hover:bg-card/30 transition-all duration-300"
             >
-              <Phone className="text-primary mb-4 mx-auto group-hover:scale-110 transition-transform" size={28} />
-              <p className="text-sm text-foreground/60 mb-1">Phone</p>
+              <div className="flex items-start justify-between mb-6">
+                <Phone className="text-foreground/30 group-hover:text-primary transition-colors" size={24} />
+                <ArrowUpRight className="text-foreground/20 group-hover:text-primary transition-colors" size={16} />
+              </div>
+              <p className="text-editorial-muted mb-2">Phone</p>
               <p className="text-foreground text-sm font-medium">+91-9162378361</p>
             </motion.a>
 
@@ -57,10 +75,12 @@ const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4 }}
-              className="p-6 rounded-xl bg-card/50"
+              className="p-8 border-r-0"
             >
-              <MapPin className="text-primary mb-4 mx-auto" size={28} />
-              <p className="text-sm text-foreground/60 mb-1">Location</p>
+              <div className="flex items-start justify-between mb-6">
+                <MapPin className="text-foreground/30" size={24} />
+              </div>
+              <p className="text-editorial-muted mb-2">Location</p>
               <p className="text-foreground text-sm font-medium">Pune, Maharashtra</p>
             </motion.div>
           </div>
@@ -70,13 +90,13 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.5 }}
-            className="mb-12"
+            className="text-center mb-16"
           >
             <a
               href="mailto:workmahto24@gmail.com"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-medium rounded hover:shadow-glow transition-all duration-300"
+              className="inline-flex items-center gap-3 px-12 py-5 bg-primary text-primary-foreground font-medium text-xs uppercase tracking-widest hover:shadow-glow transition-all duration-300"
             >
-              <Send size={18} />
+              <Send size={16} />
               Say Hello
             </a>
           </motion.div>
@@ -92,27 +112,30 @@ const Contact = () => {
               href="https://github.com/anandaa-arch"
               target="_blank"
               rel="noopener noreferrer"
-              className="social-icon w-12 h-12"
+              className="social-icon"
             >
-              <Github size={20} />
+              <Github size={18} />
             </a>
             <a
               href="https://linkedin.com/in/anandraj"
               target="_blank"
               rel="noopener noreferrer"
-              className="social-icon w-12 h-12"
+              className="social-icon"
             >
-              <Linkedin size={20} />
+              <Linkedin size={18} />
             </a>
             <a
               href="mailto:workmahto24@gmail.com"
-              className="social-icon w-12 h-12"
+              className="social-icon"
             >
-              <Mail size={20} />
+              <Mail size={18} />
             </a>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
+
+      {/* Corner decoration */}
+      <div className="corner-icon" />
     </section>
   );
 };

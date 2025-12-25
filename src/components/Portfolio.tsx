@@ -56,39 +56,44 @@ const Portfolio = () => {
     <section
       id="portfolio"
       ref={ref}
-      className="section-full py-20 relative overflow-hidden"
+      className="section-full py-24 relative overflow-hidden editorial-section"
     >
       <div className="container mx-auto px-6">
-        {/* Header */}
+        {/* Editorial Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="mb-16 border-b border-border/20 pb-8"
         >
-          <h2 className="text-5xl md:text-7xl font-heading text-foreground mb-4">
-            PORTFOLIO
-          </h2>
-          <p className="text-foreground/60 max-w-xl mx-auto">
-            Selected projects showcasing full-stack development, Web3 solutions, and AI integrations
-          </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <h2 className="editorial-title">
+                PORTFOLIO
+              </h2>
+              <p className="text-foreground/40 text-sm mt-4 max-w-lg">
+                Selected projects showcasing full-stack development, Web3 solutions, and AI integrations.
+              </p>
+            </div>
+            <span className="text-editorial-muted">{projects.length} Projects</span>
+          </div>
         </motion.div>
 
-        {/* Category Filter */}
+        {/* Category Filter - Editorial Style */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="flex flex-wrap gap-0 mb-16 border border-border/20"
         >
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 text-sm font-medium rounded transition-all duration-300 ${
+              className={`px-6 py-3 text-xs uppercase tracking-widest font-medium transition-all duration-300 border-r border-border/20 last:border-r-0 ${
                 activeCategory === cat
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-card/50 text-foreground/70 hover:text-foreground hover:bg-card"
+                  ? "bg-foreground text-background"
+                  : "bg-transparent text-foreground/50 hover:text-foreground hover:bg-card/30"
               }`}
             >
               {cat}
@@ -96,65 +101,70 @@ const Portfolio = () => {
           ))}
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
+        {/* Projects Grid - Editorial Style */}
+        <div className="grid md:grid-cols-2 gap-0 editorial-grid">
           {filteredProjects.map((project, index) => (
             <motion.article
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-              className="group relative rounded-xl overflow-hidden bg-card hover-lift"
+              className="group editorial-grid-item"
             >
               {/* Image */}
               <div className="relative h-48 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 grayscale group-hover:grayscale-0"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+                
+                {/* Number Overlay */}
+                <span className="absolute top-4 left-4 text-6xl font-heading text-foreground/10 leading-none">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
                 
                 {/* Category Badge */}
-                <span className="absolute top-4 left-4 px-3 py-1 text-xs font-medium rounded bg-primary/90 text-primary-foreground">
+                <span className="absolute top-4 right-4 px-3 py-1.5 text-[10px] uppercase tracking-widest font-medium border border-foreground/30 text-foreground bg-background/80">
                   {project.category}
                 </span>
               </div>
 
               {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-heading text-foreground mb-2 group-hover:text-primary transition-colors">
+              <div className="p-8">
+                <h3 className="text-lg font-heading text-foreground uppercase tracking-wide mb-3 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-foreground/60 text-sm mb-4 line-clamp-2">
+                <p className="text-foreground/50 text-xs leading-relaxed mb-6 line-clamp-2">
                   {project.description}
                 </p>
 
                 {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-1.5 mb-6">
                   {project.tech.slice(0, 4).map((t) => (
-                    <span key={t} className="px-2 py-1 text-xs rounded bg-muted text-foreground/60">
+                    <span key={t} className="px-2 py-1 text-[10px] uppercase tracking-wider border border-border/20 text-foreground/40">
                       {t}
                     </span>
                   ))}
                 </div>
 
                 {/* Links */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 pt-4 border-t border-border/10">
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-foreground/60 hover:text-primary transition-colors"
+                    className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-foreground/50 hover:text-primary transition-colors"
                   >
-                    <Github size={16} />
+                    <Github size={14} />
                     <span>Code</span>
                   </a>
                   <a
                     href="#"
-                    className="flex items-center gap-2 text-sm text-foreground/60 hover:text-primary transition-colors"
+                    className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-foreground/50 hover:text-primary transition-colors"
                   >
-                    <ExternalLink size={16} />
+                    <ExternalLink size={14} />
                     <span>Demo</span>
                   </a>
                 </div>
@@ -168,21 +178,21 @@ const Portfolio = () => {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center mt-12"
+          className="text-center mt-16 pt-8 border-t border-border/20"
         >
           <a
             href="https://github.com/anandaa-arch?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-primary hover:gap-4 transition-all duration-300"
+            className="inline-flex items-center gap-3 text-primary text-xs uppercase tracking-widest hover:gap-5 transition-all duration-300"
           >
             <span>View all projects on GitHub</span>
-            <ArrowRight size={18} />
+            <ArrowRight size={14} />
           </a>
         </motion.div>
       </div>
 
-      {/* Corner Expand Icon */}
+      {/* Corner decoration */}
       <div className="corner-icon" />
     </section>
   );
