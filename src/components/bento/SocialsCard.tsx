@@ -2,19 +2,19 @@ import EditorialCard from "../EditorialCard";
 import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
 
 const socials = [
-  { 
-    icon: <Github size={20} />, 
-    label: "GitHub", 
+  {
+    icon: <Github size={20} />,
+    label: "GitHub",
     href: "https://github.com/anandaa-arch",
   },
-  { 
-    icon: <Linkedin size={20} />, 
-    label: "LinkedIn", 
+  {
+    icon: <Linkedin size={20} />,
+    label: "LinkedIn",
     href: "https://linkedin.com/in/anandraj",
   },
-  { 
-    icon: <Mail size={20} />, 
-    label: "Email", 
+  {
+    icon: <Mail size={20} />,
+    label: "Email",
     href: "mailto:workmahto24@gmail.com",
   },
 ];
@@ -26,7 +26,7 @@ const SocialsCard = () => {
         <h2 className="editorial-subheading">Get In Touch</h2>
         <span className="circled-number text-sm">E</span>
       </div>
-      
+
       <div className="space-y-4">
         {socials.map((social) => (
           <a
@@ -44,7 +44,7 @@ const SocialsCard = () => {
           </a>
         ))}
       </div>
-      
+
       <p className="editorial-body text-muted-foreground mt-6 text-xs">
         Open to freelance projects and full-time opportunities.
       </p>

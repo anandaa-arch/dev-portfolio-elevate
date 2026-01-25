@@ -2,7 +2,7 @@ import EditorialCard from "../EditorialCard";
 
 const skills = [
   "Frontend Development",
-  "Backend Development", 
+  "Backend Development",
   "Smart Contracts",
   "Blockchain / Web3",
   "UI/UX Design",
@@ -16,7 +16,7 @@ const SkillsCard = () => {
         <h2 className="editorial-subheading">Skills</h2>
         <span className="circled-number border-card text-card text-sm">C</span>
       </div>
-      
+
       <div className="space-y-3">
         {skills.map((skill, index) => (
           <div key={skill} className="flex items-center gap-4">

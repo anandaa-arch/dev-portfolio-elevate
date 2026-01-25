@@ -66,18 +66,31 @@
     font-family: var(--font-body);
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
     text-transform: uppercase;
     letter-spacing: -0.02em;
   }
 
-  code, pre, .font-mono {
+  code,
+  pre,
+  .font-mono {
     font-family: var(--font-mono);
   }
 }
 
 @layer utilities {
+
+  /* Google Sans-style font using DM Sans */
+  .font-google-sans-style {
+    font-family: 'DM Sans', sans-serif;
+  }
+
   /* Editorial Grid Container */
   .editorial-grid {
     @apply grid gap-0 grid-cols-1 md:grid-cols-2 border border-border;
@@ -126,7 +139,7 @@
       grid-column: span 2;
       grid-row: span 1;
     }
-    
+
     .editorial-tall {
       grid-column: span 1;
       grid-row: span 1;
@@ -142,6 +155,7 @@
   }
 
   @media (max-width: 640px) {
+
     .editorial-hero,
     .editorial-tall,
     .editorial-wide,
@@ -281,11 +295,11 @@
   }
 
   .hero-headline {
-    font-family: var(--font-display);
+    font-family: 'DM Sans', sans-serif;
     font-size: clamp(1.5rem, 3vw, 2.6rem);
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.02em;
     color: #fff;
   }
 
@@ -308,9 +322,17 @@
     @apply w-3 h-3 rounded-full inline-block;
   }
 
-  .code-dot--red { background: #ff5f56; }
-  .code-dot--yellow { background: #ffbd2e; }
-  .code-dot--green { background: #27c93f; }
+  .code-dot--red {
+    background: #ff5f56;
+  }
+
+  .code-dot--yellow {
+    background: #ffbd2e;
+  }
+
+  .code-dot--green {
+    background: #27c93f;
+  }
 
   .code-tab {
     @apply ml-3 text-xs font-mono uppercase tracking-wide;

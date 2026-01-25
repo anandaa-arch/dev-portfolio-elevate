@@ -10,13 +10,13 @@ const HeroCard = () => {
   ];
 
   return (
-    <EditorialCard className="editorial-hero hero-card flex flex-col justify-between min-h-[340px] md:min-h-[520px] gap-6" delay={0}>
+    <EditorialCard className="editorial-hero hero-card flex flex-col justify-between min-h-[280px] md:min-h-[520px] gap-3 md:gap-6" delay={0}>
       <div className="flex justify-between items-start text-white/80">
         <span className="editorial-label text-white/80">Portfolio / 2025</span>
-        <span className="editorial-label text-white/80">Full-Stack & Web3</span>
+        <span className="editorial-label text-white/80 hidden sm:inline">Full-Stack & Web3</span>
       </div>
-      
-      <div className="flex flex-col items-center text-center gap-4">
+
+      <div className="flex flex-col items-center text-center gap-3 md:gap-4">
         <p className="hero-headline">Building the Decentralized Web</p>
         <div className="code-window">
           <div className="code-window__header">
@@ -35,12 +35,12 @@ const HeroCard = () => {
           </div>
         </div>
       </div>
-      
+
       <div className="flex justify-between items-end text-white/80">
         <div>
           <p className="editorial-label text-white/80 mb-2">Developer: Anand Raj</p>
         </div>
-        <div className="text-right">
+        <div className="text-right hidden sm:block">
           <p className="editorial-label text-white/80 mb-2">Location: Pune, Maharashtra</p>
         </div>
       </div>

@@ -7,7 +7,7 @@ const EducationCard = () => {
         <h2 className="editorial-heading">Education</h2>
         <span className="circled-number">4</span>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="mb-6 md:mb-0">
           <div className="flex items-start gap-4 mb-4">
@@ -28,7 +28,7 @@ const EducationCard = () => {
             </p>
           </div>
         </div>
-        
+
         <div className="flex flex-col justify-between">
           <div>
             <p className="editorial-label mb-2">Academic Performance</p>
@@ -37,7 +37,7 @@ const EducationCard = () => {
               <span className="text-sm font-mono text-muted-foreground">SGPA</span>
             </div>
           </div>
-          
+
           <div className="mt-6">
             <p className="editorial-label mb-2">Key Courses</p>
             <div className="flex flex-wrap gap-2">
